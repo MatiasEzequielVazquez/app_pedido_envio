@@ -46,25 +46,25 @@ public class PedidoDAO implements GenericDAO<Pedido> {
     private static final String SELECT_BY_ID_SQL = 
         "SELECT p.*, e.* FROM pedido p " +
         "LEFT JOIN envio e ON p.envio_id = e.id " +
-        "WHERE p.id = ? AND p.eliminado = FALSE";
+        "WHERE p.id = ? AND p.eliminado = 0";
     
     private static final String SELECT_ALL_SQL = 
         "SELECT p.*, e.* FROM pedido p " +
         "LEFT JOIN envio e ON p.envio_id = e.id " +
-        "WHERE p.eliminado = FALSE " +
+        "WHERE p.eliminado = 0 " +
         "ORDER BY p.id";
     
     private static final String UPDATE_SQL = 
         "UPDATE pedido SET numero = ?, fecha = ?, cliente_nombre = ?, total = ?, " +
-        "estado = ?, envio_id = ? WHERE id = ? AND eliminado = FALSE";
+        "estado = ?, envio_id = ? WHERE id = ? AND eliminado = 0";
     
     private static final String DELETE_SQL = 
-        "UPDATE pedido SET eliminado = TRUE WHERE id = ? AND eliminado = FALSE";
+        "UPDATE pedido SET eliminado = 1 WHERE id = ? AND eliminado = 0";
     
     private static final String SELECT_BY_NUMERO_SQL = 
         "SELECT p.*, e.* FROM pedido p " +
         "LEFT JOIN envio e ON p.envio_id = e.id " +
-        "WHERE p.numero = ? AND p.eliminado = FALSE";
+        "WHERE p.numero = ? AND p.eliminado = 0";
     
     // ============================================
     // MÉTODO: crear (sin transacción)

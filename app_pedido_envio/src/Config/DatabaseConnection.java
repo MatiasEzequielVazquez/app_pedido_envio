@@ -9,12 +9,17 @@ public class DatabaseConnection {
     // AJUSTA ESTOS VALORES SEGÚN TU CONFIGURACIÓN
     private static final String URL = "jdbc:mysql://localhost:3306/pedido_envio";
     private static final String USER = "root";
-    private static final String PASSWORD = "";  // ← Cambia si tienes contraseña
+    private static final String PASSWORD = "";  // Agregar la contraseña si existe
     
     public static Connection getConnection() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection(URL, USER, PASSWORD);
+            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+
+            // DEBUG: Verificar BD actual
+            System.out.println("DEBUG DatabaseConnection: Conectado a BD = " + conn.getCatalog());
+
+            return conn;
         } catch (ClassNotFoundException e) {
             throw new SQLException("Driver MySQL no encontrado", e);
         }

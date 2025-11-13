@@ -29,21 +29,21 @@ public class EnvioDAO implements GenericDAO<Envio> {
         "fecha_despacho, fecha_estimada, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     
     private static final String SELECT_BY_ID_SQL = 
-        "SELECT * FROM envio WHERE id = ? AND eliminado = FALSE";
+        "SELECT * FROM envio WHERE id = ? AND eliminado = 0";
     
     private static final String SELECT_ALL_SQL = 
-        "SELECT * FROM envio WHERE eliminado = FALSE ORDER BY id";
+        "SELECT * FROM envio ORDER BY id";
     
     private static final String UPDATE_SQL = 
         "UPDATE envio SET tracking = ?, empresa = ?, tipo = ?, costo = ?, " +
         "fecha_despacho = ?, fecha_estimada = ?, estado = ? " +
-        "WHERE id = ? AND eliminado = FALSE";
+        "WHERE id = ? AND eliminado = 0";
     
     private static final String DELETE_SQL = 
-        "UPDATE envio SET eliminado = TRUE WHERE id = ? AND eliminado = FALSE";
+        "UPDATE envio SET eliminado = TRUE WHERE id = ? AND eliminado = 0";
     
     private static final String SELECT_BY_TRACKING_SQL = 
-        "SELECT * FROM envio WHERE tracking = ? AND eliminado = FALSE";
+        "SELECT * FROM envio WHERE tracking = ? AND eliminado = 0";
     
     // ============================================
     // MÉTODO: crear (sin transacción)
@@ -106,7 +106,7 @@ public class EnvioDAO implements GenericDAO<Envio> {
     // ============================================
     // MÉTODO: leer todos
     // ============================================
-    
+    /*
     @Override
     public List<Envio> leerTodos() throws SQLException {
         List<Envio> envios = new ArrayList<>();
@@ -120,6 +120,55 @@ public class EnvioDAO implements GenericDAO<Envio> {
             }
         }
         
+        return envios;
+    }
+    */
+
+    @Override
+    public List<Envio> leerTodos() throws SQLException {
+        List<Envio> envios = new ArrayList<>();
+
+        System.out.println("DEBUG: Iniciando leerTodos()");
+        System.out.println("DEBUG: SQL = " + SELECT_ALL_SQL);
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+    try {
+        conn = DatabaseConnection.getConnection();
+        System.out.println("DEBUG: Base de datos = " + conn.getCatalog());
+
+        // COUNT directo
+        Statement stmt = conn.createStatement();
+        ResultSet rsCount = stmt.executeQuery("SELECT COUNT(*) as total FROM envio");
+        rsCount.next();
+        System.out.println("DEBUG: COUNT directo desde Java = " + rsCount.getInt("total"));
+        rsCount.close();
+        stmt.close();
+
+        ps = conn.prepareStatement(SELECT_ALL_SQL);
+        rs = ps.executeQuery();
+
+            System.out.println("DEBUG: Query ejecutada, probando rs.next()...");
+            boolean hayDatos = rs.next();
+            System.out.println("DEBUG: rs.next() devolvio = " + hayDatos);
+
+            if (hayDatos) {
+                do {
+                    System.out.println("DEBUG: Mapeando envio...");
+                    envios.add(mapearEnvio(rs));
+                } while (rs.next());
+            }
+
+            System.out.println("DEBUG: Total encontrados = " + envios.size());
+
+        } finally {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            if (conn != null) conn.close();
+        }
+
         return envios;
     }
     
@@ -259,38 +308,38 @@ public class EnvioDAO implements GenericDAO<Envio> {
      */
     public Envio mapearEnvio(ResultSet rs) throws SQLException {
         Envio envio = new Envio();
-        
+
         envio.setId(rs.getLong("id"));
         envio.setEliminado(rs.getBoolean("eliminado"));
         envio.setTracking(rs.getString("tracking"));
-        
+
         String empresaStr = rs.getString("empresa");
         if (empresaStr != null) {
             envio.setEmpresa(EmpresaEnvio.valueOf(empresaStr));
         }
-        
+
         String tipoStr = rs.getString("tipo");
         if (tipoStr != null) {
             envio.setTipo(TipoEnvio.valueOf(tipoStr));
         }
-        
+
         envio.setCosto(rs.getObject("costo", Double.class));
-        
+
         Date fechaDespacho = rs.getDate("fecha_despacho");
         if (fechaDespacho != null) {
             envio.setFechaDespacho(fechaDespacho.toLocalDate());
         }
-        
+
         Date fechaEstimada = rs.getDate("fecha_estimada");
         if (fechaEstimada != null) {
             envio.setFechaEstimada(fechaEstimada.toLocalDate());
         }
-        
+
         String estadoStr = rs.getString("estado");
         if (estadoStr != null) {
             envio.setEstado(EstadoEnvio.valueOf(estadoStr));
         }
-        
+
         return envio;
     }
 }

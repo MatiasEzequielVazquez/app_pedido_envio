@@ -116,10 +116,9 @@ public class PedidoServiceImpl implements GenericService<Pedido> {
                 tm.commit();
                 
             } catch (Exception e) {
-                // Algo falló → rollback
-                tm.rollback();
-                throw new SQLException("Error en transacción al crear pedido con envío: " + e.getMessage(), e);
-            }
+            // NO hacer rollback manual, lo hace close() automáticamente
+            throw new SQLException("Error en transacción: " + e.getMessage(), e);
+        }
             
         } finally {
             if (tm != null) {
