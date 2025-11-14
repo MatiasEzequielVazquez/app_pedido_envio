@@ -115,7 +115,7 @@ public class MenuHandler {
      */
     public void crearEnvio() {
         MenuDisplay.mostrarSeparador();
-        System.out.println("📦 CREAR NUEVO ENVÍO");
+        System.out.println("CREAR NUEVO ENVÍO");
         MenuDisplay.mostrarSeparador();
         
         try {
@@ -230,14 +230,14 @@ public class MenuHandler {
      */
     public void listarEnvios() {
         MenuDisplay.mostrarSeparador();
-        System.out.println("📋 LISTADO DE ENVÍOS");
+        System.out.println("LISTADO DE ENVÍOS");
         MenuDisplay.mostrarSeparador();
         
         try {
             List<Envio> envios = envioService.obtenerTodos();
             
             if (envios.isEmpty()) {
-                System.out.println("\n📭 No hay envíos registrados.");
+                System.out.println("\nNo hay envíos registrados.");
                 return;
             }
             
@@ -267,7 +267,7 @@ public class MenuHandler {
      */
     public void buscarEnvioPorId() {
         MenuDisplay.mostrarSeparador();
-        System.out.println("🔍 BUSCAR ENVÍO POR ID");
+        System.out.println("BUSCAR ENVÍO POR ID");
         MenuDisplay.mostrarSeparador();
         
         try {
@@ -281,7 +281,7 @@ public class MenuHandler {
             
             Envio envio = envioService.obtenerPorId(id);
             
-            System.out.println("\n✅ Envío encontrado:");
+            System.out.println("\nEnvío encontrado:");
             mostrarEnvio(envio);
             
         } catch (IllegalArgumentException e) {
@@ -304,7 +304,7 @@ public class MenuHandler {
      */
     public void buscarEnvioPorTracking() {
         MenuDisplay.mostrarSeparador();
-        System.out.println("🔍 BUSCAR ENVÍO POR TRACKING");
+        System.out.println("BUSCAR ENVÍO POR TRACKING");
         MenuDisplay.mostrarSeparador();
         
         try {
@@ -319,11 +319,11 @@ public class MenuHandler {
             Envio envio = envioService.buscarPorTracking(tracking);
             
             if (envio == null) {
-                System.out.println("\n📭 No se encontró envío con tracking: " + tracking);
+                System.out.println("\nNo se encontró envío con tracking: " + tracking);
                 return;
             }
             
-            System.out.println("\n✅ Envío encontrado:");
+            System.out.println("\nEnvío encontrado:");
             mostrarEnvio(envio);
             
         } catch (IllegalArgumentException e) {
@@ -350,7 +350,7 @@ public class MenuHandler {
      */
     public void actualizarEnvio() {
         MenuDisplay.mostrarSeparador();
-        System.out.println("✏️  ACTUALIZAR ENVÍO");
+        System.out.println("ACTUALIZAR ENVÍO");
         MenuDisplay.mostrarSeparador();
         
         try {
@@ -366,10 +366,10 @@ public class MenuHandler {
             Envio envioActual = envioService.obtenerPorId(id);
             
             // 2. Mostrar datos actuales
-            System.out.println("\n📦 Datos actuales del envío:");
+            System.out.println("\nDatos actuales del envío:");
             mostrarEnvio(envioActual);
             
-            System.out.println("\n💡 Presione Enter para mantener el valor actual");
+            System.out.println("\nPresione Enter para mantener el valor actual");
             MenuDisplay.mostrarSeparador();
             
             // 3. Solicitar nuevos datos
@@ -417,7 +417,7 @@ public class MenuHandler {
             
             System.out.print("\nFecha despacho actual [" + 
                 (envioActual.getFechaDespacho() != null ? envioActual.getFechaDespacho().format(DATE_FORMATTER) : "Sin fecha") 
-                + "] (dd/MM/yyyy): ");
+                + "] (dd/mm/aaaa): ");
             String fechaDespachoStr = scanner.nextLine().trim();
             if (!fechaDespachoStr.isEmpty()) {
                 LocalDate fechaDespacho = parsearFecha(fechaDespachoStr);
@@ -428,7 +428,7 @@ public class MenuHandler {
             
             System.out.print("\nFecha estimada actual [" + 
                 (envioActual.getFechaEstimada() != null ? envioActual.getFechaEstimada().format(DATE_FORMATTER) : "Sin fecha") 
-                + "] (dd/MM/yyyy): ");
+                + "] (dd/mm/aaaa): ");
             String fechaEstimadaStr = scanner.nextLine().trim();
             if (!fechaEstimadaStr.isEmpty()) {
                 LocalDate fechaEstimada = parsearFecha(fechaEstimadaStr);
@@ -480,7 +480,7 @@ public class MenuHandler {
      */
     public void eliminarEnvio() {
         MenuDisplay.mostrarSeparador();
-        System.out.println("🗑️  ELIMINAR ENVÍO");
+        System.out.println("ELIMINAR ENVÍO");
         MenuDisplay.mostrarSeparador();
         
         try {
@@ -494,14 +494,14 @@ public class MenuHandler {
             
             Envio envio = envioService.obtenerPorId(id);
             
-            System.out.println("\n📦 Envío a eliminar:");
+            System.out.println("\nEnvío a eliminar:");
             mostrarEnvio(envio);
             
-            System.out.print("\n⚠️  ¿Está seguro de eliminar este envío? (S/N): ");
+            System.out.print("\n¿Está seguro de eliminar este envío? (S/N): ");
             String confirmacion = scanner.nextLine().trim().toUpperCase();
             
             if (!confirmacion.equals("S")) {
-                System.out.println("❌ Operación cancelada");
+                System.out.println("Operación cancelada");
                 return;
             }
             
@@ -548,7 +548,7 @@ public class MenuHandler {
      */
     public void crearPedidoSinEnvio() {
         MenuDisplay.mostrarSeparador();
-        System.out.println("🛒 CREAR NUEVO PEDIDO (SIN ENVÍO)");
+        System.out.println("CREAR NUEVO PEDIDO (SIN ENVÍO)");
         MenuDisplay.mostrarSeparador();
         
         try {
@@ -643,12 +643,12 @@ public class MenuHandler {
      */
     public void crearPedidoConEnvio() {
         MenuDisplay.mostrarSeparador();
-        System.out.println("🛒📦 CREAR PEDIDO CON ENVÍO (TRANSACCIÓN)");
+        System.out.println("CREAR PEDIDO CON ENVÍO (TRANSACCIÓN)");
         MenuDisplay.mostrarSeparador();
         
         try {
             // ═══ PASO 1: DATOS DEL PEDIDO ═══
-            System.out.println("\n▶ DATOS DEL PEDIDO:");
+            System.out.println("\nDATOS DEL PEDIDO:");
             MenuDisplay.mostrarSeparador();
             
             System.out.print("Número de pedido (máx 20 caracteres): ");
@@ -697,7 +697,7 @@ public class MenuHandler {
             }
             
             // ═══ PASO 2: DATOS DEL ENVÍO ═══
-            System.out.println("\n▶ DATOS DEL ENVÍO:");
+            System.out.println("\nDATOS DEL ENVÍO:");
             MenuDisplay.mostrarSeparador();
             
             System.out.print("Tracking (máx 40 caracteres): ");
@@ -782,13 +782,13 @@ public class MenuHandler {
             pedido.setEnvio(envio);
             
             // ═══ PASO 5: TRANSACCIÓN ═══
-            System.out.println("\n⏳ Creando pedido con envío en transacción...");
+            System.out.println("\nCreando pedido con envío en transacción...");
             pedidoService.crearPedidoConEnvio(pedido);
             
             // ═══ PASO 6: RESULTADO ═══
-            MenuDisplay.mostrarExito("✅ Pedido y envío creados exitosamente en transacción");
-            System.out.println("\n📦 Envío creado - ID: " + envio.getId() + " | Tracking: " + envio.getTracking());
-            System.out.println("🛒 Pedido creado - ID: " + pedido.getId() + " | Número: " + pedido.getNumero());
+            MenuDisplay.mostrarExito("Pedido y envío creados exitosamente en transacción");
+            System.out.println("\nEnvío creado - ID: " + envio.getId() + " | Tracking: " + envio.getTracking());
+            System.out.println("Pedido creado - ID: " + pedido.getId() + " | Número: " + pedido.getNumero());
             
         } catch (IllegalArgumentException e) {
             MenuDisplay.mostrarError("Validación: " + e.getMessage());
@@ -811,14 +811,14 @@ public class MenuHandler {
      */
     public void listarPedidos() {
         MenuDisplay.mostrarSeparador();
-        System.out.println("📋 LISTADO DE PEDIDOS");
+        System.out.println("LISTADO DE PEDIDOS");
         MenuDisplay.mostrarSeparador();
         
         try {
             List<Pedido> pedidos = pedidoService.obtenerTodos();
             
             if (pedidos.isEmpty()) {
-                System.out.println("\n📭 No hay pedidos registrados.");
+                System.out.println("\nNo hay pedidos registrados.");
                 return;
             }
             
@@ -848,7 +848,7 @@ public class MenuHandler {
      */
     public void buscarPedidoPorId() {
         MenuDisplay.mostrarSeparador();
-        System.out.println("🔍 BUSCAR PEDIDO POR ID");
+        System.out.println("BUSCAR PEDIDO POR ID");
         MenuDisplay.mostrarSeparador();
         
         try {
@@ -862,7 +862,7 @@ public class MenuHandler {
             
             Pedido pedido = pedidoService.obtenerPorId(id);
             
-            System.out.println("\n✅ Pedido encontrado:");
+            System.out.println("\nPedido encontrado:");
             mostrarPedido(pedido);
             
         } catch (IllegalArgumentException e) {
@@ -885,7 +885,7 @@ public class MenuHandler {
      */
     public void buscarPedidoPorNumero() {
         MenuDisplay.mostrarSeparador();
-        System.out.println("🔍 BUSCAR PEDIDO POR NÚMERO");
+        System.out.println("BUSCAR PEDIDO POR NÚMERO");
         MenuDisplay.mostrarSeparador();
         
         try {
@@ -900,11 +900,11 @@ public class MenuHandler {
             Pedido pedido = pedidoService.buscarPorNumero(numero);
             
             if (pedido == null) {
-                System.out.println("\n📭 No se encontró pedido con número: " + numero);
+                System.out.println("\nNo se encontró pedido con número: " + numero);
                 return;
             }
             
-            System.out.println("\n✅ Pedido encontrado:");
+            System.out.println("\nPedido encontrado:");
             mostrarPedido(pedido);
             
         } catch (IllegalArgumentException e) {
@@ -934,7 +934,7 @@ public class MenuHandler {
      */
     public void actualizarPedido() {
         MenuDisplay.mostrarSeparador();
-        System.out.println("✏️  ACTUALIZAR PEDIDO");
+        System.out.println("ACTUALIZAR PEDIDO");
         MenuDisplay.mostrarSeparador();
         
         try {
@@ -950,10 +950,10 @@ public class MenuHandler {
             Pedido pedidoActual = pedidoService.obtenerPorId(id);
             
             // 2. Mostrar datos actuales
-            System.out.println("\n🛒 Datos actuales del pedido:");
+            System.out.println("\nDatos actuales del pedido:");
             mostrarPedido(pedidoActual);
             
-            System.out.println("\n💡 Presione Enter para mantener el valor actual");
+            System.out.println("\nPresione Enter para mantener el valor actual");
             MenuDisplay.mostrarSeparador();
             
             // 3. Solicitar nuevos datos
@@ -963,7 +963,7 @@ public class MenuHandler {
                 pedidoActual.setNumero(numero);
             }
             
-            System.out.print("\nFecha actual [" + pedidoActual.getFecha().format(DATE_FORMATTER) + "] (dd/MM/yyyy): ");
+            System.out.print("\nFecha actual [" + pedidoActual.getFecha().format(DATE_FORMATTER) + "] (dd/mm/aaaa): ");
             String fechaStr = scanner.nextLine().trim();
             if (!fechaStr.isEmpty()) {
                 LocalDate fecha = parsearFecha(fechaStr);
@@ -1033,7 +1033,7 @@ public class MenuHandler {
      */
     public void eliminarPedido() {
         MenuDisplay.mostrarSeparador();
-        System.out.println("🗑️  ELIMINAR PEDIDO");
+        System.out.println("ELIMINAR PEDIDO");
         MenuDisplay.mostrarSeparador();
         
         try {
@@ -1047,7 +1047,7 @@ public class MenuHandler {
             
             Pedido pedido = pedidoService.obtenerPorId(id);
             
-            System.out.println("\n🛒 Pedido a eliminar:");
+            System.out.println("\nPedido a eliminar:");
             mostrarPedido(pedido);
             
             if (pedido.tieneEnvio()) {
@@ -1055,11 +1055,11 @@ public class MenuHandler {
                 System.out.println("El envío NO será eliminado, solo el pedido.");
             }
             
-            System.out.print("\n⚠️  ¿Está seguro de eliminar este pedido? (S/N): ");
+            System.out.print("\n¿Está seguro de eliminar este pedido? (S/N): ");
             String confirmacion = scanner.nextLine().trim().toUpperCase();
             
             if (!confirmacion.equals("S")) {
-                System.out.println("❌ Operación cancelada");
+                System.out.println("Operación cancelada");
                 return;
             }
             
@@ -1271,17 +1271,17 @@ public class MenuHandler {
      */
     private void mostrarEnvio(Envio envio) {
         System.out.println("╔══════════════════════════════════════════════════╗");
-        System.out.println("║                 ENVÍO #" + envio.getId() + "                      ║");
+        System.out.println("║                 ENVÍO #" + envio.getId() + "                   ║");
         System.out.println("╠══════════════════════════════════════════════════╣");
-        System.out.printf("║ Tracking:        %-31s ║%n", envio.getTracking());
-        System.out.printf("║ Empresa:         %-31s ║%n", envio.getEmpresa());
-        System.out.printf("║ Tipo:            %-31s ║%n", envio.getTipo());
-        System.out.printf("║ Costo:           $%-30.2f ║%n", envio.getCosto());
-        System.out.printf("║ F. Despacho:     %-31s ║%n", 
+        System.out.printf("║ Tracking:        %-25s ║%n", envio.getTracking());
+        System.out.printf("║ Empresa:         %-25s ║%n", envio.getEmpresa());
+        System.out.printf("║ Tipo:            %-25s ║%n", envio.getTipo());
+        System.out.printf("║ Costo:           $%-24.2f ║%n", envio.getCosto());
+        System.out.printf("║ F. Despacho:     %-25s ║%n", 
             envio.getFechaDespacho() != null ? envio.getFechaDespacho().format(DATE_FORMATTER) : "Sin fecha");
-        System.out.printf("║ F. Estimada:     %-31s ║%n", 
+        System.out.printf("║ F. Estimada:     %-25s ║%n", 
             envio.getFechaEstimada() != null ? envio.getFechaEstimada().format(DATE_FORMATTER) : "Sin fecha");
-        System.out.printf("║ Estado:          %-31s ║%n", envio.getEstado());
+        System.out.printf("║ Estado:          %-25s ║%n", envio.getEstado());
         System.out.println("╚══════════════════════════════════════════════════╝");
     }
     
@@ -1292,26 +1292,26 @@ public class MenuHandler {
      */
     private void mostrarPedido(Pedido pedido) {
         System.out.println("╔══════════════════════════════════════════════════╗");
-        System.out.println("║                PEDIDO #" + pedido.getId() + "                     ║");
+        System.out.println("║                PEDIDO #" + pedido.getId() + "                   ║");
         System.out.println("╠══════════════════════════════════════════════════╣");
-        System.out.printf("║ Número:          %-31s ║%n", pedido.getNumero());
-        System.out.printf("║ Fecha:           %-31s ║%n", pedido.getFecha().format(DATE_FORMATTER));
-        System.out.printf("║ Cliente:         %-31s ║%n", pedido.getClienteNombre());
-        System.out.printf("║ Total:           $%-30.2f ║%n", pedido.getTotal());
-        System.out.printf("║ Estado:          %-31s ║%n", pedido.getEstado());
+        System.out.printf("║ Número:          %-25s ║%n", pedido.getNumero());
+        System.out.printf("║ Fecha:           %-25s ║%n", pedido.getFecha().format(DATE_FORMATTER));
+        System.out.printf("║ Cliente:         %-25s ║%n", pedido.getClienteNombre());
+        System.out.printf("║ Total:           $%-24.2f ║%n", pedido.getTotal());
+        System.out.printf("║ Estado:          %-25s ║%n", pedido.getEstado());
         
         if (pedido.tieneEnvio()) {
             Envio envio = pedido.getEnvio();
             System.out.println("╠══════════════════════════════════════════════════╣");
-            System.out.println("║              📦 ENVÍO ASOCIADO                   ║");
+            System.out.println("║               ENVÍO ASOCIADO               ║");
             System.out.println("╠══════════════════════════════════════════════════╣");
-            System.out.printf("║ ID Envío:        %-31s ║%n", envio.getId());
-            System.out.printf("║ Tracking:        %-31s ║%n", envio.getTracking());
-            System.out.printf("║ Empresa:         %-31s ║%n", envio.getEmpresa());
-            System.out.printf("║ Estado Envío:    %-31s ║%n", envio.getEstado());
+            System.out.printf("║ ID Envío:        %-25s ║%n", envio.getId());
+            System.out.printf("║ Tracking:        %-25s ║%n", envio.getTracking());
+            System.out.printf("║ Empresa:         %-25s ║%n", envio.getEmpresa());
+            System.out.printf("║ Estado Envío:    %-25s ║%n", envio.getEstado());
         } else {
             System.out.println("╠══════════════════════════════════════════════════╣");
-            System.out.println("║              📭 SIN ENVÍO ASOCIADO               ║");
+            System.out.println("║             SIN ENVÍO ASOCIADO             ║");
         }
         
         System.out.println("╚══════════════════════════════════════════════════╝");

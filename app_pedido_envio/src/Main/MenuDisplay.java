@@ -48,7 +48,7 @@ public class MenuDisplay {
      */
     public static void mostrarMenuPrincipal() {
         System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║     SISTEMA PEDIDO-ENVÍO               ║");
+        System.out.println("║       SISTEMA PEDIDO-ENVÍO        ║");
         System.out.println("╚════════════════════════════════════════╝");
         
         System.out.println("\nGESTIÓN DE ENVÍOS:");
@@ -71,7 +71,7 @@ public class MenuDisplay {
         System.out.println("\nSALIR:");
         System.out.println("  0. Salir del sistema");
         
-        System.out.print("\n👉 Ingrese una opción: ");
+        System.out.print("\nIngrese una opción: ");
     }
     
     /**

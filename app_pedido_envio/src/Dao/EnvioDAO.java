@@ -32,7 +32,7 @@ public class EnvioDAO implements GenericDAO<Envio> {
         "SELECT * FROM envio WHERE id = ? AND eliminado = 0";
     
     private static final String SELECT_ALL_SQL = 
-        "SELECT * FROM envio ORDER BY id";
+        "SELECT * FROM envio WHERE eliminado <> 1 ORDER BY id";
     
     private static final String UPDATE_SQL = 
         "UPDATE envio SET tracking = ?, empresa = ?, tipo = ?, costo = ?, " +

@@ -108,11 +108,11 @@ public class AppMenu {
                 int opcion = Integer.parseInt(scanner.nextLine());
                 processOption(opcion);
             } catch (NumberFormatException e) {
-                System.out.println("❌ Entrada inválida. Por favor, ingrese un número.");
+                System.out.println("Entrada inválida. Por favor, ingrese un número.");
             }
         }
         scanner.close();
-        System.out.println("✅ Aplicación cerrada correctamente.");
+        System.out.println("Aplicación cerrada correctamente.");
     }
     
     /**
@@ -171,11 +171,11 @@ public class AppMenu {
             
             // === SALIR ===
             case 0 -> {
-                System.out.println("\n👋 Saliendo del sistema...");
+                System.out.println("\nSaliendo del sistema...");
                 running = false;
             }
             
-            default -> System.out.println("❌ Opción no válida. Intente nuevamente.");
+            default -> System.out.println("Opción no válida. Intente nuevamente.");
         }
     }
     
