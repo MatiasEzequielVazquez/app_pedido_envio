@@ -16,9 +16,6 @@ public class DatabaseConnection {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
 
-            // DEBUG: Verificar BD actual
-            //System.out.println("DEBUG DatabaseConnection: Conectado a BD = " + conn.getCatalog());
-
             return conn;
         } catch (ClassNotFoundException e) {
             throw new SQLException("Driver MySQL no encontrado", e);
