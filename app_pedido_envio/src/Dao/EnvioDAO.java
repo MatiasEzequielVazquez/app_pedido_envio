@@ -106,23 +106,7 @@ public class EnvioDAO implements GenericDAO<Envio> {
     // ============================================
     // MÉTODO: leer todos
     // ============================================
-    /*
-    @Override
-    public List<Envio> leerTodos() throws SQLException {
-        List<Envio> envios = new ArrayList<>();
-        
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(SELECT_ALL_SQL);
-             ResultSet rs = ps.executeQuery()) {
-            
-            while (rs.next()) {
-                envios.add(mapearEnvio(rs));
-            }
-        }
-        
-        return envios;
-    }
-    */
+    
 
     @Override
     public List<Envio> leerTodos() throws SQLException {

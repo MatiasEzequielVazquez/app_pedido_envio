@@ -28,14 +28,6 @@ import java.util.Scanner;
  * - Mostrar resultados al usuario (éxito, error, listados)
  * - Manejar excepciones y mostrar mensajes amigables
  *
- * IMPORTANTE: Esta clase NO tiene lógica de negocio.
- * Solo coordina la interacción usuario ↔ Service.
- * Las validaciones de negocio están en Service.
- *
- * Arquitectura:
- * Main (MenuHandler) → Service → DAO → Models
- *
- * Patrón: Controller / Handler del MVC adaptado a consola
  */
 public class MenuHandler {
     
