@@ -433,7 +433,3 @@ Este proyecto representa la integración de todos los conceptos vistos durante e
 - Manejar recursos y excepciones correctamente
 - Validar integridad de datos en múltiples niveles
 - Documentar código de forma profesional
-
-## Autores
-
-Matías Ezequiel Vazquez // Patricio Sussini Guanziroli // Lucas Martín Zárate
