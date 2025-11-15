@@ -12,7 +12,6 @@ Aplicación de consola que permite gestionar pedidos y sus envíos asociados, co
 
 - **Matías Ezequiel Vazquez** - Desarrollo de capa DAO y Service Etapa ENVIO
 - **Patricio Sussini Guanziroli** - Desarrollo de DAO y Service Etapa PEDIDO
-- **Lucas Martín Zárate** - Desarrollo de capa Main y las interacciones con el menú.
 
 **Distribución de trabajo:** Todos los integrantes contribuyeron equitativamente (~33% cada uno) en el diseño, implementación y documentación del sistema, incluido el diseño y desarrollo de la DB en SQL.
 
