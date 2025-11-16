@@ -6,7 +6,7 @@ Sistema de gestión de pedidos y envíos desarrollado en Java con arquitectura e
 
 Aplicación de consola que permite gestionar pedidos y sus envíos asociados, con soporte para operaciones CRUD completas, soft delete y transacciones atómicas. El sistema mantiene una relación unidireccional Pedido→Envío con integridad referencial.
 
-## 👥 Autores
+## Autores
 
 **Equipo de Desarrollo:**
 
@@ -434,3 +434,19 @@ Este proyecto representa la integración de todos los conceptos vistos durante e
 - Manejar recursos y excepciones correctamente
 - Validar integridad de datos en múltiples niveles
 - Documentar código de forma profesional
+
+
+## Entregables del Proyecto
+
+- **Informe Técnico:** [Ver documento](https://drive.google.com/file/d/1CtHnXrwQv-925-IbtlOjCaPtkVMSx-Sj/view?usp=drive_link)
+  - Decisiones de diseño, arquitectura y transacciones
+  - Análisis técnico completo
+
+- **Diagrama UML:** [Ver diagrama](https://drive.google.com/file/d/1E1_MlgG_Zx_AydQv2FFNw9y1pMu3hEPL/view?usp=drive_link)
+  - Relación 1→1 unidireccional Pedido→Envío
+  - Interfaces, DAOs, Services y dependencias
+
+- **Video Demostración:** [Ver video](https://drive.google.com/file/d/1fgbQfbauITAwegTSVNYHFcywZnJl7sQP/view?usp=drive_link)
+  - Demo CRUD completo
+  - Demostración de rollback transaccional
+  - Explicación de arquitectura en capas
